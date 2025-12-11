@@ -23,6 +23,18 @@ go build -o go-cloud-test
 
 # Run the built binary
 ./go-cloud-test
+
+# Run tests
+go test
+
+# Run tests with verbose output
+go test -v
+
+# Run tests with coverage
+go test -cover
+
+# Run benchmarks
+go test -bench=.
 ```
 
 ## Development Approach

@@ -6,14 +6,35 @@ import (
 	"time"
 )
 
-func main() {
-	fmt.Println("--- Cloud Build Sandbox Demo ---")
-	fmt.Printf("Current time: %s\n", time.Now().Format(time.RFC3339))
+// hostnameGetter is a function type that returns hostname and error
+type hostnameGetter func() (string, error)
 
-	hostname, err := os.Hostname()
+// defaultHostnameGetter uses os.Hostname
+var defaultHostnameGetter hostnameGetter = os.Hostname
+
+func getHostname() string {
+	return getHostnameWithGetter(defaultHostnameGetter)
+}
+
+func getHostnameWithGetter(getter hostnameGetter) string {
+	hostname, err := getter()
 	if err != nil {
-		hostname = "unknown"
+		return "unknown"
 	}
-	fmt.Printf("Hostname: %s\n", hostname)
+	return hostname
+}
+
+func formatTimestamp(t time.Time) string {
+	return t.Format(time.RFC3339)
+}
+
+func generateMessage() string {
+	return "--- Cloud Build Sandbox Demo ---"
+}
+
+func main() {
+	fmt.Println(generateMessage())
+	fmt.Printf("Current time: %s\n", formatTimestamp(time.Now()))
+	fmt.Printf("Hostname: %s\n", getHostname())
 	fmt.Println("\nBuild test successful!")
 }
