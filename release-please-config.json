@@ -3,6 +3,7 @@
     ".": {
       "release-type": "go",
       "package-name": "go-cloud-test",
+      "include-component-in-tag": false,
       "changelog-sections": [
         {
           "type": "feat",
