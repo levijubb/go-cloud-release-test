@@ -11,10 +11,10 @@ import (
 // hostnameGetter is a function type that returns hostname and error
 type hostnameGetter func() (string, error)
 
-var dagetter hostnameGetter = os.Hostname
+var d hostnameGetter = os.Hostname
 
 func getHostname() string {
-	return getHostnameWithGetter(dagetter)
+	return getHostnameWithGetter(d)
 }
 
 func getHostnameWithGetter(getter hostnameGetter) string {
