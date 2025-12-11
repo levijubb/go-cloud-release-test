@@ -2,7 +2,7 @@
   "packages": {
     ".": {
       "release-type": "go",
-      "package-name": "go-auto-release-test",
+      "package-name": "go-cloud-test",
       "changelog-sections": [
         {
           "type": "feat",

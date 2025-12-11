@@ -6,9 +6,9 @@ before:
     - go test ./...
 
 builds:
-  - id: go-auto-release-test
+  - id: go-cloud-test
     main: ./main.go
-    binary: go-auto-release-test
+    binary: go-cloud-test
     env:
       - CGO_ENABLED=0
     goos:
@@ -20,9 +20,6 @@ builds:
       - arm64
     ldflags:
       - -s -w
-      - -X main.version={{.Version}}
-      - -X main.commit={{.Commit}}
-      - -X main.date={{.Date}}
 
 archives:
   - id: default
@@ -38,9 +35,6 @@ archives:
     format_overrides:
       - goos: windows
         format: zip
-    files:
-      - README.md
-      - LICENSE
 
 checksum:
   name_template: "checksums.txt"
