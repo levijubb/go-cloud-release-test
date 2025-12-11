@@ -6,8 +6,6 @@ import (
 	"time"
 )
 
-// feat
-
 // hostnameGetter is a function type that returns hostname and error
 type hostnameGetter func() (string, error)
 
